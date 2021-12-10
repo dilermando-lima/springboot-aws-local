@@ -4,9 +4,9 @@
 
 # ====================== read variables file
 if [ -n "$1"  ]; then
-        echo "reading $2 into enviromment variables"
+        echo "reading $1 into enviromment variables"
         set -a
-        source $2
+        source $1
         set +a
 fi
 
