@@ -7,12 +7,12 @@ This project is a simple way to test service of AWS locally with [localstack ima
   * [Start container AWS LOCAL](#start-container-aws-local)
   * [Setup container AWS LOCAL](#setup-container-aws-local)
   * [Start application](#start-application)
-  * [Swagger endpoint](#swagger-endpoint)
+  * [Doc endpoint](#doc-endpoint)
 
 ## Services AWS
 Services implemented:
   - SQS
-  - S3 ( not yet )
+  - S3
   - dynamo ( not yet )
 
 
@@ -22,12 +22,13 @@ It's required install:
   - java11+
   - gradle 
   - aws cli
+  - postman
 
 > all scripts bash has been created on ubuntu SO. You can see them in `./local/sript/*`
 
 
 ## Start container AWS LOCAL
-All script are placed in `./local/sript/*` and all of them use enviromment variabbles from `./local/env/local.env` as application uses too.
+All script are placed in `./local/sript/*` and all of them use enviromment variables from `./local/env/local.env` as application uses too.
 
 ```bash
 
@@ -58,11 +59,10 @@ bash ./local/script/start-app-gradle.bash ./local/env/local.env
 
 ```
 
-You want to use VSCODE all launch is already added in `.vscode/launch.json`. So let's try F5 and enjoy
+If you wish to use VSCODE, all launch is already added in `.vscode/launch.json`. So let's try **F5** and enjoy it
 
-## Swagger endpoint
-After start aplication up access swagger link:
-  - http://localhost:8080/swagger-ui.html
+## Doc endpoint
+After start aplication up access all rest resources are placed in `./doc-api/springboot-aws-local.postman_collection.json` and can be imported into postman
 
 
 

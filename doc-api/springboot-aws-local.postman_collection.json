@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "3651f302-417b-4ec1-980a-8303646e0c7f",
+		"name": "springboot-aws-local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SQS",
+			"item": [
+				{
+					"name": "publish-message-queue-1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "any message"
+						},
+						"url": {
+							"raw": "localhost:8080/aws-sqs/publish-queue-1?header1=value-header1&header2=value-header2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-sqs",
+								"publish-queue-1"
+							],
+							"query": [
+								{
+									"key": "header1",
+									"value": "value-header1"
+								},
+								{
+									"key": "header2",
+									"value": "value-header2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "publish-message-queue-2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "any message"
+						},
+						"url": {
+							"raw": "localhost:8080/aws-sqs/publish-queue-2?header1=value-header1&header2=value-header2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-sqs",
+								"publish-queue-2"
+							],
+							"query": [
+								{
+									"key": "header1",
+									"value": "value-header1"
+								},
+								{
+									"key": "header2",
+									"value": "value-header2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "S3",
+			"item": [
+				{
+					"name": "list-object",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/aws-s3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-s3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put-object-from-string",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fhjgfjhgf jhg f"
+						},
+						"url": {
+							"raw": "localhost:8080/aws-s3/name-file-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-s3",
+								"name-file-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put-object-from-file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/aws-s3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-s3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-object",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/aws-s3/name-file-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-s3",
+								"name-file-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-object-as-string",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fhjgfjhgf jhg f"
+						},
+						"url": {
+							"raw": "localhost:8080/aws-s3/name-file-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-s3",
+								"name-file-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-object-as-file",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fhjgfjhgf jhg f"
+						},
+						"url": {
+							"raw": "localhost:8080/aws-s3/name-file-1/download",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-s3",
+								"name-file-1",
+								"download"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

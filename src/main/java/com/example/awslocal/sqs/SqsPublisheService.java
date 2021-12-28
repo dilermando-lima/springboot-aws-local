@@ -12,10 +12,10 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SqsPublisheMessage {
+public class SqsPublisheService {
 
 
-    static final Logger LOGGER = LoggerFactory.getLogger(SqsPublisheMessage.class);
+    static final Logger LOGGER = LoggerFactory.getLogger(SqsPublisheService.class);
 
     @Autowired SqsProperties sqsProperties;
 
@@ -24,21 +24,23 @@ public class SqsPublisheMessage {
 
     public void publishQueue1(String message, Map<String, Object> headers) {
         LOGGER.debug("Calling publishQueue1()");
-        publishMessageSQS(sqsProperties.getNameQueue2(), message , headers);
+
+        publishMessageSQS(sqsProperties.getNameQueue1(), message , headers);
     }
 
     public void publishQueue2(String message, Map<String, Object> headers) {
         LOGGER.debug("Calling publishQueue2()");
-        publishMessageSQS(sqsProperties.getNameQueue1(), message , headers);
+
+        publishMessageSQS(sqsProperties.getNameQueue2(), message , headers);
     }
 
     private void publishMessageSQS(String queueName, String message, Map<String, Object> headers){
 
         LOGGER.debug("Calling publishMessageSQS() : queueName = {} , message = {} , headers = {} " , queueName ,  message ,  headers );
-         
+
         jmsTemplate.convertAndSend(queueName, message , postProcessor -> {
 
-            postProcessor.setJMSCorrelationID("@DILO.LIMA-" + UUID.randomUUID().toString());
+            postProcessor.setJMSCorrelationID("@DILERMANDO.LIMA-" + UUID.randomUUID().toString());
 
             LOGGER.debug("id_message_sent = {} ", postProcessor.getJMSCorrelationID());
 
