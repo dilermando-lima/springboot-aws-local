@@ -221,6 +221,167 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "DYNAMO",
+			"item": [
+				{
+					"name": "scan-entity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/aws-dynamo/scan-entity?pageSize=10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-dynamo",
+								"scan-entity"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scan-map",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/aws-dynamo/scan-map?pageSize=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-dynamo",
+								"scan-map"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "2"
+								},
+								{
+									"key": "projectionExpression",
+									"value": "id",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put-item-by-entity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"id3\",\n    \"name\": \"name 3\",\n    \"dateLastUpdated\": \"2021-12-29T14:38:49.800271\",\n    \"description\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/aws-dynamo/by-entity",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-dynamo",
+								"by-entity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put-item-by-map",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"id1\",\n    \"attr\": 1,\n    \"attr2\": \"value-attr-2\",\n    \"attr3\": \"2022-01-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/aws-dynamo/by-map",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-dynamo",
+								"by-map"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "load-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/aws-dynamo/id2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-dynamo",
+								"id2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "load-by-id-with-projetion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/aws-dynamo/id1/with-projection?projectionExpretion=id,attr",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aws-dynamo",
+								"id1",
+								"with-projection"
+							],
+							"query": [
+								{
+									"key": "projectionExpretion",
+									"value": "id,attr"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

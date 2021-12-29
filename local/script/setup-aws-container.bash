@@ -26,3 +26,12 @@ fi
 # ======================= CREATING BUCKETS
     echo "==== CREATING DEFAULT BUCKETS"
     aws --endpoint-url=http://localhost:$AWS_CONTAINER_EDGE_PORT s3api create-bucket --bucket $AWS_S3_NAME_BUCKET_1
+
+
+# ======================= CREATE DYNAMO TABLES AWS
+echo " ============ CREATING DEFAULT DYNAMO TABLES"
+    aws --endpoint-url=http://localhost:$AWS_CONTAINER_EDGE_PORT dynamodb create-table \
+                            --table-name $AWS_DYNAMO_NAME_TABLE_1 \
+                            --attribute-definitions AttributeName=id,AttributeType=S \
+                            --key-schema AttributeName=id,KeyType=HASH  \
+                            --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --no-cli-pager

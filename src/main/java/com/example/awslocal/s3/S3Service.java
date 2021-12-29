@@ -30,7 +30,7 @@ public class S3Service {
     static final Logger LOGGER = LoggerFactory.getLogger(S3Service.class);
 
     @Autowired S3Properties s3Properties;
-    @Autowired AmazonS3 amazonS3;
+    @Autowired AmazonS3 amazonS3Client;
 
 
     public List<S3ObjectSummary> listObject(){
@@ -38,7 +38,7 @@ public class S3Service {
 
         LOGGER.debug("s3Properties.getNameBucket1 = {}" , s3Properties.getNameBucket1());
 
-        return amazonS3
+        return amazonS3Client
                 .listObjectsV2(s3Properties.getNameBucket1())
                 .getObjectSummaries();
     }
@@ -48,7 +48,7 @@ public class S3Service {
 
         LOGGER.debug("Calling getResourceByKey() : keyFileS3 = {}" , keyFileS3);
 
-        S3Object s3object =  amazonS3.getObject(s3Properties.getNameBucket1(), keyFileS3);
+        S3Object s3object =  amazonS3Client.getObject(s3Properties.getNameBucket1(), keyFileS3);
 
         LOGGER.debug("s3object = {}" , s3object);
 
@@ -66,7 +66,7 @@ public class S3Service {
 
         LOGGER.debug("Calling getContentByKey() : keyFileS3 = {}" , keyFileS3);
 
-        try (S3ObjectInputStream inputStream = amazonS3.getObject(s3Properties.getNameBucket1(), keyFileS3).getObjectContent()) {
+        try (S3ObjectInputStream inputStream = amazonS3Client.getObject(s3Properties.getNameBucket1(), keyFileS3).getObjectContent()) {
             
             return StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
         
@@ -77,7 +77,7 @@ public class S3Service {
     public void deleteObject(String keyFileS3){
 
         LOGGER.debug("Calling deleteObject() : keyFileS3 = {}" , keyFileS3);
-        amazonS3.deleteObject(s3Properties.getNameBucket1(), keyFileS3);
+        amazonS3Client.deleteObject(s3Properties.getNameBucket1(), keyFileS3);
 
     }
 
@@ -93,7 +93,7 @@ public class S3Service {
 
         LOGGER.debug("file.contentType = {}" , file.getContentType());
 
-        return  amazonS3.putObject(s3Properties.getNameBucket1(), file.getOriginalFilename(), file.getInputStream(), objectMetadata);
+        return  amazonS3Client.putObject(s3Properties.getNameBucket1(), file.getOriginalFilename(), file.getInputStream(), objectMetadata);
     }
 
 
@@ -102,7 +102,7 @@ public class S3Service {
         LOGGER.debug("Calling putContent() : keyFileS3 = {} , content = {}" , keyFileS3, content);
 
 
-        return  amazonS3.putObject(s3Properties.getNameBucket1(), keyFileS3, content);
+        return  amazonS3Client.putObject(s3Properties.getNameBucket1(), keyFileS3, content);
     }
 
 

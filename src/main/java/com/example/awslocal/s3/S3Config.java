@@ -8,14 +8,12 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jms.annotation.EnableJms;
 
-@EnableJms
 @Configuration
 public class S3Config {
 
     @Bean
-    public AmazonS3 amazonS3(@Autowired S3Properties s3Properties) {
+    public AmazonS3 amazonS3Client(@Autowired S3Properties s3Properties) {
 
         AmazonS3ClientBuilder s3ClientBuilder =  AmazonS3ClientBuilder.standard();
         s3ClientBuilder.withCredentials(new EnvironmentVariableCredentialsProvider());

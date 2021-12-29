@@ -13,7 +13,7 @@ This project is a simple way to test service of AWS locally with [localstack ima
 Services implemented:
   - SQS
   - S3
-  - dynamo ( not yet )
+  - dynamo
 
 
 ## Requeriments
@@ -62,7 +62,7 @@ bash ./local/script/start-app-gradle.bash ./local/env/local.env
 If you wish to use VSCODE, all launch is already added in `.vscode/launch.json`. So let's try **F5** and enjoy it
 
 ## Doc endpoint
-After start aplication up access all rest resources are placed in `./doc-api/springboot-aws-local.postman_collection.json` and can be imported into postman
+After start aplication up, all rest resources are placed in `./doc-api/springboot-aws-local.postman_collection.json` and can be imported into postman
 
 
 
